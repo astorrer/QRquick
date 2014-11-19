@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @quick_code.name
+%p
+  %b Content:
+  = @quick_code.content
+%p
+  %b Size:
+  = @quick_code.size
+%p
+  %b Level:
+  = @quick_code.level
+%p
+  %b Offset:
+  = @quick_code.offset
+%p
+  %b Unit:
+  = @quick_code.unit
+%p
+  %b Fill:
+  = @quick_code.fill
+%p
+  %b Color:
+  = @quick_code.color
+
+= link_to 'Edit', edit_quick_code_path(@quick_code)
+\|
+= link_to 'Back', quick_codes_path

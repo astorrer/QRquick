@@ -1,0 +1,15 @@
+= simple_form_for(@quick_code) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :content
+    = f.input :size
+    = f.input :level
+    = f.input :offset
+    = f.input :unit
+    = f.input :fill
+    = f.input :color
+
+  .form-actions
+    = f.button :submit

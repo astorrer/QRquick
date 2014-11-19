@@ -1,0 +1,33 @@
+%h1 Listing quick_codes
+
+%table
+  %tr
+    %th Name
+    %th Content
+    %th Size
+    %th Level
+    %th Offset
+    %th Unit
+    %th Fill
+    %th Color
+    %th
+    %th
+    %th
+
+  - @quick_codes.each do |quick_code|
+    %tr
+      %td= quick_code.name
+      %td= quick_code.content
+      %td= quick_code.size
+      %td= quick_code.level
+      %td= quick_code.offset
+      %td= quick_code.unit
+      %td= quick_code.fill
+      %td= quick_code.color
+      %td= link_to 'Show', quick_code
+      %td= link_to 'Edit', edit_quick_code_path(quick_code)
+      %td= link_to 'Destroy', quick_code, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Quick code', new_quick_code_path
