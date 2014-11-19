@@ -24,6 +24,8 @@
       %td= quick_code.unit
       %td= quick_code.fill
       %td= quick_code.color
+      %td= link_to "SVG", quick_code_path(quick_code, format: "svg")
+      %td= link_to "PNG", quick_code_path(quick_code, format: "png")
       %td= link_to 'Show', quick_code
       %td= link_to 'Edit', edit_quick_code_path(quick_code)
       %td= link_to 'Destroy', quick_code, :method => :delete, :data => { :confirm => 'Are you sure?' }

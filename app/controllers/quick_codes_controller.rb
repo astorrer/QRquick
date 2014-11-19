@@ -10,7 +10,11 @@ class QuickCodesController < ApplicationController
   end
 
   def show
-    respond_with(@quick_code)
+    respond_to do |format|
+      format.html
+      format.svg  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
+      format.png  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
+    end
   end
 
   def new
