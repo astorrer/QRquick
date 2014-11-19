@@ -1,4 +1,4 @@
-= simple_form_for(@quick_code) do |f|
+= simple_form_for(@quick_code, html: {class: 'form-horizontal' }) do |f|
   = f.error_notification
 
   .form-inputs
@@ -12,4 +12,4 @@
     = f.input :color
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-default'

@@ -5,20 +5,26 @@ class QuickCodesController < ApplicationController
   respond_to :html
 
   def index
-    @quick_codes = QuickCode.all
+    @quick_codes = current_user.quick_codes.all
     respond_with(@quick_codes)
   end
 
   def show
     respond_to do |format|
       format.html
+      # Render the QR Code images
       format.svg  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
       format.png  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
+      format.gif  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
+      format.jpeg { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
+      # Provide an XLS or CSV list
+      format.xls { send_data(@quick_code.records.to_xls) }
+      format.csv { send_data(@quick_code.records.to_csv) }
     end
   end
 
   def new
-    @quick_code = QuickCode.new
+    @quick_code = current_user.quick_codes.new
     respond_with(@quick_code)
   end
 
@@ -26,7 +32,7 @@ class QuickCodesController < ApplicationController
   end
 
   def create
-    @quick_code = QuickCode.new(quick_code_params)
+    @quick_code = current_user.quick_codes.new(quick_code_params)
     flash[:notice] = 'QuickCode was successfully created.' if @quick_code.save
     respond_with(@quick_code)
   end
@@ -43,7 +49,7 @@ class QuickCodesController < ApplicationController
 
   private
     def set_quick_code
-      @quick_code = QuickCode.find(params[:id])
+      @quick_code = current_user.quick_code.find(params[:id])
     end
 
     def quick_code_params
