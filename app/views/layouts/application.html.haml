@@ -2,10 +2,11 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Qrquick'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Qrquick'}"}
+    %title= content_for?(:title) ? yield(:title) : 'QRquick'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'QRquick'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = render 'layouts/favicons'
     = csrf_meta_tags
   %body
     %header
