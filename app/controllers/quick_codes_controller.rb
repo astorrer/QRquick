@@ -49,7 +49,7 @@ class QuickCodesController < ApplicationController
 
   private
     def set_quick_code
-      @quick_code = current_user.quick_code.find(params[:id])
+      @quick_code = current_user.quick_codes.find(params[:id])
     end
 
     def quick_code_params
