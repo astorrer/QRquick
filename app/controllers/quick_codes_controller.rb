@@ -16,7 +16,7 @@ class QuickCodesController < ApplicationController
       format.svg  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
       format.png  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
       format.gif  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
-      format.jpeg { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
+      format.jpg { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
       # Provide an XLS or CSV list
       format.xls { send_data(@quick_code.records.to_xls) }
       format.csv { send_data(@quick_code.records.to_csv) }
