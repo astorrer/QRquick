@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require jquery.minicolors
 //= require_tree .
+
+$(document).on('page:change', function () {
+  $('#quick_code_color').minicolors({theme: 'bootstrap'})
+  $('#quick_code_fill').minicolors({theme: 'bootstrap'}) 
+});

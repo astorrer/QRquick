@@ -1,15 +1,26 @@
-= simple_form_for(@quick_code, html: {class: 'form-horizontal' }) do |f|
-  = f.error_notification
+.row
+  .col-lg-12
+    - if @quick_code.errors.any?
+      .alert.alert-warning.alert-dismissable
+        %a.close{:'data-dismiss' => "alert", :href => '#'} &times;
+        %i.fa.fa-exclamation-sign
+        = pluralize(@quick_code.errors.count, "error") + ' prevented this area from being created:'
+        %ul
+          - @quick_code.errors.full_messages.each do |msg|
+            %li= msg
+.row
+  .col-lg-12
+    = form_for(@quick_code) do |f|
 
-  .form-inputs
-    = f.input :name
-    = f.input :content
-    = f.input :size
-    = f.input :level
-    = f.input :offset
-    = f.input :unit
-    = f.input :fill
-    = f.input :color
+      .form-inputs
+        = f.text_field :name, class: "form-control"
+        = f.text_field :content, class: "form-control"
+        = f.number_field :size, class: "form-control"
+        = f.number_field :level, class: "form-control"
+        = f.number_field :offset, class: "form-control"
+        = f.number_field :unit, class: "form-control"
+        = f.text_field :fill, class: "form-control"
+        = f.text_field :color, class: "form-control minicolor"
 
-  .form-actions
-    = f.button :submit, class: 'btn btn-default'
+      .form-actions
+        = f.button :submit, class: 'btn btn-default'
