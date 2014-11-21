@@ -11,6 +11,7 @@
   %body
     = render 'layouts/navbar'
     .container
+      - render 'layouts/messages'
       - if user_signed_in?
         = render 'layouts/sidebar'
       - else
