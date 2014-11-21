@@ -18,7 +18,7 @@ class QuickCodesController < ApplicationController
   def show
     fill = @quick_code.fill[1..-1]
     color = @quick_code.color[1..-1]
-    
+
     respond_to do |format|
       format.html
       # Render the QR Code images
