@@ -17,6 +17,8 @@ gem 'simple_form'
 gem 'rqrcode-rails3'
 gem 'mini_magick'
 gem 'jquery-minicolors-rails'
+gem 'to_xls-rails'
+gem 'to_csv-rails'
 
 group :development do
   gem 'better_errors'

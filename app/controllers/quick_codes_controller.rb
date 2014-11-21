@@ -6,20 +6,26 @@ class QuickCodesController < ApplicationController
 
   def index
     @quick_codes = current_user.quick_codes.all
-    respond_with(@quick_codes)
+
+    respond_to do |format|
+      format.html
+      # Provide an XLS or CSV list
+      format.xls { send_data(@quick_codes.to_xls, :filename => "Codes-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls") }
+      format.csv { send_data(@quick_codes.to_csv, :filename => "Codes-#{Time.now.strftime("%Y%m%d%H%M%S")}.csv") }
+    end
   end
 
   def show
+    fill = @quick_code.fill[1..-1]
+    color = @quick_code.color[1..-1]
+    
     respond_to do |format|
       format.html
       # Render the QR Code images
-      format.svg  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
-      format.png  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset, :fill => @quick_code.fill, :color => @quick_code.color }
-      format.gif  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
-      format.jpg { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset }
-      # Provide an XLS or CSV list
-      format.xls { send_data(@quick_code.records.to_xls) }
-      format.csv { send_data(@quick_code.records.to_csv) }
+      format.svg  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset, :fill => fill, :color => color }
+      format.png  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset, :fill => fill, :color => color }
+      format.gif  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset, :fill => fill, :color => color }
+      format.jpg  { render :qrcode => @quick_code.content, :level => :h, :unit => @quick_code.unit, :offset => @quick_code.offset, :fill => fill, :color => color }
     end
   end
 

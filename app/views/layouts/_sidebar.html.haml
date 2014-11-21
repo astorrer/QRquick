@@ -1,35 +1,22 @@
-.col-sm-3
-  %h3
-    %i.glyphicon.glyphicon-briefcase
-    Toolbox
-  %hr/
-  %ul.nav.nav-stacked
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-flash
-        Alerts
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-link
-        Links
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-list-alt
-        Reports
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-book
-        Books
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-briefcase
-        Tools
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-time
-        Real-time
-    %li
-      %a{:href => "javascript:;"}
-        %i.glyphicon.glyphicon-plus
-        Advanced..
-  %hr/
+.row
+  .col-sm-2
+    %hr/
+    %ul.nav.nav-stacked
+      %li
+        = link_to quick_codes_path do
+          %i.glyphicon.glyphicon-list-alt
+          MANAGE
+      %li
+        = link_to new_quick_code_path do
+          %i.glyphicon.glyphicon-qrcode
+          ADD CODE
+      %li
+        = link_to quick_codes_path(@quick_codes, format: "xls") do
+          %i.glyphicon.glyphicon-export
+          EXPORT XLS
+      %li
+        = link_to quick_codes_path(@quick_codes, format: "csv") do
+          %i.glyphicon.glyphicon-export
+          EXPORT CSV
+  .col-sm-10
+    = yield

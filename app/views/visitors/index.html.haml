@@ -1,5 +1,26 @@
 .container-fluid
   .row
     .col-lg-12
-      %h3 Welcome to QRquick!
-      = image_tag('qr_logo.png')
+      = image_tag('logo.png', class: 'image-responsive', style: 'height: 200px' )
+      %hr
+  .row
+    .col-lg-6
+      %h3 About
+      %p
+        QRquick is an open source QR Code generator application. Use it for business cards, T-Shirts, 
+        photos, and more! Store hundreds of codes in our database, for free!
+      %h4 How do I read the codes?
+      %p
+        You can read them with a scanner or built in camera. You may need to download an app, 
+        but don't worry- there are tons of free apps for both Android and IOS.
+    .col-lg-6
+      %h3 Features
+      %ul
+        %li Open Source
+        %li Store Hundreds of Codes
+        %li Custom Colors
+        %li CSV & EXCEL Export
+        %li Download as an SVG, GIF, PNG, or JPG.
+  .row
+    .col-lg-12
+      %h6 “QR Code” is registered trademark of DENSO WAVE INCORPORATED

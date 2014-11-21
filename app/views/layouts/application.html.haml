@@ -11,31 +11,9 @@
   %body
     = render 'layouts/navbar'
     .container
-      .row
-        - if user_signed_in?
-          .col-sm-2
-            %hr/
-            %ul.nav.nav-stacked
-              %li
-                %a{:href => "javascript:;"}
-                  %i.glyphicon.glyphicon-list-alt
-                  MANAGE
-              %li
-                %a{:href => "javascript:;"}
-                  %i.glyphicon.glyphicon-flash
-                  ADD CODE
-              %li
-                %a{:href => "javascript:;"}
-                  %i.glyphicon.glyphicon-link
-                  EXPORT XLS
-              %li
-                %a{:href => "javascript:;"}
-                  %i.glyphicon.glyphicon-list-alt
-                  EXPORT CSV
-              %li
-                %a{:href => "javascript:;"}
-                  %i.glyphicon.glyphicon-list-alt
-                  DROPBOX
-        .col-sm-10
-          = yield
-    = render 'layouts/footer' 
+      - if user_signed_in?
+        = render 'layouts/sidebar'
+      - else
+        .row
+          .col-sm-12
+            = yield
