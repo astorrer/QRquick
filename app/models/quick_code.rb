@@ -3,9 +3,9 @@ class QuickCode < ActiveRecord::Base
 
   validates :name, :presence => true, length: { in: 3..20 }
   validates :content, :presence => true, length: { in: 1..50 }
-  validates :size, :presence => true, length: { in: 100..1000 }, numericality: { only_integer: true }
-  validates :offset, :presence => true, length: { in: 1..100 }, numericality: { only_integer: true }
-  validates :unit, :presence => true, length: { in: 1..100 }, numericality: { only_integer: true }
+  validates :size, :presence => true, length: { in: 2..4 }, numericality: { only_integer: true }
+  validates :offset, :presence => true, length: { in: 1..10 }, numericality: { only_integer: true }
+  validates :unit, :presence => true, length: { in: 1..10 }, numericality: { only_integer: true }
   validates :fill, :css_hex_color => true, :presence => true
   validates :color, :css_hex_color => true, :presence => true
   validate :qr_count_within_limit, :on => :create
